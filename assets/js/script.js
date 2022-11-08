@@ -1,7 +1,12 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-var currentDay = moment();
+var currentDay = dayjs();
+var currentHour = 8;
+
+$(`.saveBtn`).on(`click`, function () {
+  console.log(`click`);
+});
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
@@ -11,16 +16,34 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   //
+
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
   //
+  var timeID = parseInt($(`.time-block`).attr(`id`).split("hour-")[1]);
+  console.log(timeID);
+  console.log(currentHour);
+  if (timeID < currentHour) {
+    $(`.time-block`).addClass(`past`);
+  } else if (currentHour == timeID) {
+    $(`.time-block`).addClass(`present`);
+  } else {
+    $(`.time-block`).addClass(`future`);
+  }
+
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
+
   // TODO: Add code to display the current date in the header of the page.
-  $("#currentDay").text(currentDay.format("MMM Do, YYYY"));
+
+  $("#currentDay").text(currentDay.format("MMM Do, YYYY [at] HH:mm:ss a"));
+
+  // setTimeout(function (event) {
+  //   location = "";
+  // }, 1000);
 });
