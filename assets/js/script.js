@@ -7,7 +7,7 @@ var saveButton = $(`.saveBtn`);
 var currentDay = dayjs();
 var currentHour = currentDay.format(`HH`);
 
-console.log(currentHour);
+// console.log(currentHour);
 
 saveButton.on(`click`, saveInputToStorage);
 
@@ -20,8 +20,8 @@ saveButton.on(`click`, saveInputToStorage);
 function saveInputToStorage() {
   var userInput = $(this).siblings(`.description`).val();
   var timeID = $(this).parent().attr(`id`);
-  console.log(timeID);
-  console.log(userInput);
+  // console.log(timeID);
+  // console.log(userInput);
   localStorage.setItem(timeID, userInput);
 }
 
@@ -35,7 +35,7 @@ function saveInputToStorage() {
 function colorDisplay() {
   timeBlockEl.each(function () {
     timeID = parseInt($(this).attr(`id`).split("hour-")[1]);
-    console.log(timeID);
+    // console.log(timeID);
     if (timeID < currentHour) {
       $(this).addClass(`past`);
       $(this).removeClass(`present`);
@@ -56,6 +56,17 @@ function colorDisplay() {
 // the values of the corresponding textarea elements. HINT: How can the id
 // attribute of each time-block be used to do this?
 //
+function displayUserInput() {
+  $(`#hour-9 .description`).val(localStorage.getItem(`hour-9`));
+  $(`#hour-10 .description`).val(localStorage.getItem(`hour-10`));
+  $(`#hour-11 .description`).val(localStorage.getItem(`hour-11`));
+  $(`#hour-12 .description`).val(localStorage.getItem(`hour-12`));
+  $(`#hour-13 .description`).val(localStorage.getItem(`hour-13`));
+  $(`#hour-14 .description`).val(localStorage.getItem(`hour-14`));
+  $(`#hour-15 .description`).val(localStorage.getItem(`hour-15`));
+  $(`#hour-16 .description`).val(localStorage.getItem(`hour-16`));
+  $(`#hour-17 .description`).val(localStorage.getItem(`hour-17`));
+}
 
 // TODO: Add code to display the current date in the header of the page.
 function displayTime() {
@@ -64,5 +75,6 @@ function displayTime() {
 }
 
 displayTime();
+displayUserInput();
 colorDisplay();
 setInterval(displayTime, 1000);
