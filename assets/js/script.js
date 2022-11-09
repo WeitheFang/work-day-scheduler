@@ -4,7 +4,7 @@
 var timeDisplayEl = $(`#currentDay`);
 var timeBlockEl = $(`.time-block`);
 var saveButton = $(`.saveBtn`);
-var userInput = $(`description`);
+var userInput = $(`.description`);
 var currentDay = dayjs();
 var currentHour = currentDay.format(`HH`);
 
