@@ -1,6 +1,3 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
 var timeDisplayEl = $(`#currentDay`);
 var timeBlockEl = $(`.time-block`);
 var saveButton = $(`.saveBtn`);
@@ -74,7 +71,13 @@ function displayTime() {
   timeDisplayEl.text(rightNow);
 }
 
-displayTime();
-displayUserInput();
-colorDisplay();
-setInterval(displayTime, 1000);
+// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
+// the code isn't run until the browser has finished rendering all the elements
+// in the html.
+$(function () {
+  saveInputToStorage();
+  displayTime();
+  displayUserInput();
+  colorDisplay();
+  setInterval(displayTime, 1000);
+});
