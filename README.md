@@ -14,7 +14,7 @@ You can start to input and save your schedule in the column and then press the s
 
 ![alt text](assets/images/application-screen-shot.png)
 
-Quiz-app link: https://weithefang.github.io/work-day-scheduler/
+Workday Scheduler link: https://weithefang.github.io/work-day-scheduler/
 
 ## Credits
 
